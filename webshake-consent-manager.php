@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'WSCM_VERSION', '1.4.3' );
+define( 'WSCM_VERSION', '1.2.1' );
 define( 'WSCM_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'WSCM_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'WSCM_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
