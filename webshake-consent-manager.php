@@ -23,6 +23,16 @@ define( 'WSCM_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'WSCM_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'WSCM_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
 
+$puc_path = WSCM_PLUGIN_DIR . 'plugin-update-checker/plugin-update-checker.php';
+if ( file_exists( $puc_path ) ) {
+	require $puc_path;
+	YahnisElsts\PluginUpdateChecker\v5\PucFactory::buildUpdateChecker(
+		'https://github.com/NielsHendriks/WS-Cookie-Manager/',
+		__FILE__,
+		'webshake-consent-manager'
+	)->setBranch( 'main' );
+}
+
 require_once WSCM_PLUGIN_DIR . 'includes/class-wscm-db.php';
 require_once WSCM_PLUGIN_DIR . 'includes/class-wscm-scanner.php';
 require_once WSCM_PLUGIN_DIR . 'includes/class-wscm-blocker.php';
