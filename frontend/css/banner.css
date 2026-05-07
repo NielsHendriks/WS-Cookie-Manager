@@ -728,6 +728,12 @@
 	.wscm-banner.wscm-pos-center,
 	.wscm-banner.wscm-pos-bottom-left,
 	.wscm-banner.wscm-pos-bottom-right {
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		max-width: none;
+		width: 100%;
 		transform: translateY(16px);
 	}
 
@@ -741,15 +747,6 @@
 	.wscm-banner.wscm-pos-bottom-left.wscm-hiding,
 	.wscm-banner.wscm-pos-bottom-right.wscm-hiding {
 		transform: translateY(16px);
-	}
-
-	.wscm-pos-bottom-left,
-	.wscm-pos-bottom-right {
-		left: 0;
-		right: 0;
-		bottom: 0;
-		max-width: none;
-		width: 100%;
 	}
 
 	.wscm-banner-icon {
