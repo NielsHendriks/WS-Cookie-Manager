@@ -3,7 +3,7 @@
  * Plugin Name: Webshake Consent Manager
  * Plugin URI: https://webshake.nl/consent-manager
  * Description: GDPR/CCPA consent manager that auto-detects tracking scripts (Facebook Pixel, GA4, GTM, Matomo, Hotjar, LinkedIn, TikTok, and more) and blocks them until user consent is given.
- * Version: 1.2.5
+ * Version: 1.2.6
  * Author: Webshake
  * Author URI: https://webshake.nl
  * License: GPL-2.0+
@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'WSCM_VERSION', '1.2.5' );
+define( 'WSCM_VERSION', '1.2.6' );
 define( 'WSCM_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'WSCM_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'WSCM_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
@@ -30,7 +30,7 @@ if ( file_exists( $puc_path ) ) {
 		'https://github.com/NielsHendriks/WS-Cookie-Manager/',
 		__FILE__,
 		'webshake-consent-manager'
-	)->setBranch( 'main' );
+	);
 }
 
 require_once WSCM_PLUGIN_DIR . 'includes/class-wscm-db.php';
