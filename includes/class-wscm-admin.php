@@ -322,7 +322,9 @@ class WSCM_Admin {
 			$settings['consent_expiry_days'] = absint( $data['consent_expiry_days'] );
 		}
 		if ( isset( $data['geo_targeting'] ) ) {
-			$settings['geo_targeting'] = sanitize_text_field( $data['geo_targeting'] );
+			$allowed_geo = [ 'all', 'eu', 'california' ];
+			$geo         = sanitize_text_field( $data['geo_targeting'] );
+			$settings['geo_targeting'] = in_array( $geo, $allowed_geo, true ) ? $geo : 'all';
 		}
 		if ( isset( $data['dark_mode'] ) ) {
 			$allowed_modes = [ 'off', 'on', 'auto' ];
@@ -718,7 +720,7 @@ class WSCM_Admin {
 				<?php esc_html_e( 'Onderstaand privacybeleid is automatisch gegenereerd op basis van je gedetecteerde scripts. Kopieer de tekst en plak deze op een nieuwe pagina. Pas de tekst aan waar nodig (zoek naar "[e-mailadres]").', 'webshake-consent-manager' ); ?>
 			</p>
 			<div class="wscm-policy-preview" id="wscm-policy-preview">
-				<?php echo $policy_html; ?>
+				<?php echo wp_kses_post( $policy_html ); ?>
 			</div>
 		</div>
 		<?php

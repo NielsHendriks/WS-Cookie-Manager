@@ -111,8 +111,20 @@ class WSCM_Rest {
 	 * Simple IP-based rate limiting via transients: max 10 consent logs
 	 * per IP per minute to prevent spam/DoS attacks on the public endpoint.
 	 */
+	private function get_client_ip() {
+		// Cloudflare
+		if ( ! empty( $_SERVER['HTTP_CF_CONNECTING_IP'] ) ) {
+			return $_SERVER['HTTP_CF_CONNECTING_IP'];
+		}
+		// Standard reverse-proxy header (single IP only — ignore lists to prevent spoofing)
+		if ( ! empty( $_SERVER['HTTP_X_REAL_IP'] ) ) {
+			return $_SERVER['HTTP_X_REAL_IP'];
+		}
+		return $_SERVER['REMOTE_ADDR'] ?? '0.0.0.0';
+	}
+
 	private function is_rate_limited() {
-		$ip  = $_SERVER['REMOTE_ADDR'] ?? '0.0.0.0';
+		$ip  = $this->get_client_ip();
 		$key = 'wscm_rl_' . md5( $ip );
 		$count = (int) get_transient( $key );
 
