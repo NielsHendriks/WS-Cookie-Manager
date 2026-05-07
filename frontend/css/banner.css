@@ -725,6 +725,24 @@
 		flex-shrink: 0;
 	}
 
+	.wscm-pos-center,
+	.wscm-pos-bottom-left,
+	.wscm-pos-bottom-right {
+		transform: translateY(16px);
+	}
+
+	.wscm-pos-center.wscm-visible,
+	.wscm-pos-bottom-left.wscm-visible,
+	.wscm-pos-bottom-right.wscm-visible {
+		transform: translateY(0);
+	}
+
+	.wscm-pos-center.wscm-hiding,
+	.wscm-pos-bottom-left.wscm-hiding,
+	.wscm-pos-bottom-right.wscm-hiding {
+		transform: translateY(16px);
+	}
+
 	.wscm-pos-bottom-left,
 	.wscm-pos-bottom-right {
 		left: 0;
